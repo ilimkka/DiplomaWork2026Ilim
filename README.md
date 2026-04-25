@@ -1,7 +1,7 @@
 # Forecasting Unemployment in Kyrgyzstan Using Machine Learning and Time Series Analysis
 
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1NY3ye74ubiDjO6pd5MYGiDyQMPNnaqJQ?usp=sharing)
-[![Kaggle Dataset](https://img.shields.io/badge/Kaggle-Dataset-blue.svg)](https://www.kaggle.com/YOUR_KAGGLE_LINK) Still need to make kaggle
+[![Kaggle Dataset](https://img.shields.io/badge/Kaggle-Dataset-blue.svg)](https://www.kaggle.com/YOUR_KAGGLE_LINK) *Still need to make kaggle*
 
 ## 📌 Project Overview
 The labor market in transition economies like Kyrgyzstan is very sensitive to external shocks, such as currency changes, inflation increases, and variations in remittance inflows. Traditional statistical forecasting methods often do not capture the complex, non-linear relationships and sudden shifts that are typical in these settings. 
@@ -46,11 +46,11 @@ To stress-test the labor market, the model was fed three distinct macroeconomic 
 3.  **Crisis Scenario (Stagflationary Shock):** Features hyperinflation (122%), massive currency devaluation (182 KGS/USD), and a sharp drop in remittances.
     * *Result:* The algorithm successfully captured the "lagging" nature of the labor market. Businesses absorb the initial shock, but the compounded pressure leads to a structural breaking point by 2028, forcing a severe spike in unemployment to 7.47%.
 
-*(Insert your final visualization here)*
-`![Unemployment Forecast Graph](link_to_image.png)`
+*Final forecasts visualization*
+![Unemployment Forecast Graph](final_forecast.png)
 
-*(Insert your feature importance visualization here)*
-`![Feature Importance Graph](link_to_image.png)`
+*Feature importance visualization*
+![Feature Importance Graph](feature_importance_diploma.png)
 
 ## ✍️ Author
 **[Ilim Tazhibaev]** * **University:** Ala-Too International University 
