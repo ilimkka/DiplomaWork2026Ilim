@@ -13,7 +13,7 @@ The dataset spans from 2000 to 2023 and encompasses 10 core macroeconomic indica
 * **Target Variable:** Unemployment, total (% of total labor force)
 * **Independent Variables:** Exchange Rates, Employment in Agriculture, FDI, Inflation (GDP deflator), Tertiary School Enrollment, Personal Remittances, GDP Growth, Gold Prices, and Kumtor Gold Production.
 
-**Data Engineering Pipeline:**
+**Data Engineering:**
 1.  **Interpolation:** Mathematical smoothing of structural outlier years (2010 political crisis, 2020 pandemic) to ensure algorithms learn fundamental economic patterns rather than historical anomalies.
 2.  **Stationarity Transformation:** Addressed spurious regression risks by conducting Augmented Dickey-Fuller (ADF) tests. Non-stationary variables were transformed using First Differences (d=1) and Second Differences (d=2) to predict annual changes/velocities rather than absolute levels.
 3.  **Feature Selection:** Utilized Gradient Boosting and Random Forest feature importance to isolate the top 5 most impactful predictors of unemployment.
