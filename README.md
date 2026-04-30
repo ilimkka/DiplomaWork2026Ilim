@@ -1,57 +1,25 @@
-# Forecasting Unemployment in Kyrgyzstan Using Machine Learning and Time Series Analysis
+# Forecasting Labor Market Indicators in Kyrgyzstan Using Machine Learning
 
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1NY3ye74ubiDjO6pd5MYGiDyQMPNnaqJQ?usp=sharing)
-[![Kaggle Dataset](https://img.shields.io/badge/Kaggle-Dataset-blue.svg)](https://www.kaggle.com/YOUR_KAGGLE_LINK) *Still need to make kaggle*
+## Project Overview
+This project forecasts Kyrgyzstan’s unemployment rate up to the year 2028 by combining machine learning (ML) techniques with time-series econometrics. It utilizes historical macroeconomic data (2000–2023) to build a predictive engine capable of modeling various economic scenarios.
 
-## 📌 Project Overview
-The labor market in transition economies like Kyrgyzstan is very sensitive to external shocks, such as currency changes, inflation increases, and variations in remittance inflows. Traditional statistical forecasting methods often do not capture the complex, non-linear relationships and sudden shifts that are typical in these settings. 
+## Methodology
+The project follows a hybrid forecasting pipeline:
+1.  **Data Preparation:** Cleaning raw World Bank data and handling specific economic indicators (Remittances, Gold prices, etc.).
+2.  **Feature Importance:** Using Gradient Boosting, Random Forest, and XGBoost to identify the most significant macroeconomic predictors (Agri-Employment and Remittances were found to be key).
+3.  **Stationarity Testing:** Augmented Dickey-Fuller (ADF) tests to determine the integration order for ARIMA modeling.
+4.  **AutoARIMA Projection:** Forecasting the features themselves to create inputs for future scenarios.
+5.  **ML Forecasting:** Using a Gradient Boosting Regressor trained on historical lags to predict the final unemployment rate.
 
-This project creates an adaptive, ensemble machine learning model (XGBoost) paired with automated econometric forecasting (AutoARIMA) to predict the national unemployment rate up to 2029 under different macroeconomic scenarios.
+## Key Scenarios
+*   **Base (Inertial):** Persistence of current dynamics. Projected unemployment: ~3.54% by 2028.
+*   **Deflationary:** Optimistic scenario with stable currency and cooling prices.
+*   **Stagflationary Crisis:** Simulates economic shocks leading to a structural collapse (~6.56% unemployment by 2028).
 
-## 📊 Data Sources & Preprocessing
-The dataset spans from 2000 to 2023 and encompasses 10 core macroeconomic indicators:
-* **Target Variable:** Unemployment, total (% of total labor force)
-* **Independent Variables:** Exchange Rates, Employment in Agriculture, FDI, Inflation (GDP deflator), Tertiary School Enrollment, Personal Remittances, GDP Growth, Gold Prices, and Kumtor Gold Production.
+## Repository Structure
+*   `Finished_labor_data.csv`: Cleaned and transposed dataset used for modeling.
+*   `DiplomaWorkMain.ipynb`: Complete technical implementation (Data cleaning -> ML Models -> Visualization).
+*   `requirements.txt`: List of required Python libraries.
 
-**Data Engineering:**
-1.  **Interpolation:** Mathematical smoothing of structural outlier years (2010 political crisis, 2020 pandemic) to ensure algorithms learn fundamental economic patterns rather than historical anomalies.
-2.  **Stationarity Transformation:** Addressed spurious regression risks by conducting Augmented Dickey-Fuller (ADF) tests. Non-stationary variables were transformed using First Differences (d=1) and Second Differences (d=2) to predict annual changes/velocities rather than absolute levels.
-3.  **Feature Selection:** Utilized Gradient Boosting and Random Forest feature importance to isolate the top 5 most impactful predictors of unemployment.
-
-## 🛠 Technology Stack
-**Data Preparation & Analysis**
-* **Excel:** Initial data collection and manual consolidation.
-* **Pandas & NumPy:** Core data cleaning, time-series indexing, feature engineering (differencing), and numerical operations.
-
-**Statistical Testing & Time Series Forecasting**
-* **Statsmodels:** Augmented Dickey-Fuller (ADF) tests to confirm stationarity.
-* **pmdarima (Auto-ARIMA) & SARIMAX:** Automated hyperparameter tuning (p, d, q) via Maximum Likelihood Estimation (MLE) to forecast exogenous factors and generate 95% confidence intervals.
-
-**Machine Learning & Predictive Modeling**
-* **Scikit-Learn:** Utilized for data scaling (StandardScaler), Forward Walking Cross-Validation (to prevent chronological data leakage), and metric evaluation (MAE, MSE, RMSE, R-squared).
-* **Models Benchmarked:** Linear Regression (baseline), Support Vector Regression (SVR), Random Forest, and Gradient Boosting.
-* **Final Model:** **XGBoost Regressor** (Selected as the primary forecasting engine after outperforming all baseline models).
-
-**Visualization & Environment**
-* **Matplotlib & Seaborn:** Generating academic-grade, multi-scenario time-series plots.
-* **Google Colab:** The cloud-based Jupyter environment used for algorithmic development.
-
-## 📈 Macroeconomic Scenarios & Key Findings
-To stress-test the labor market, the model was fed three distinct macroeconomic trajectories generated by the AutoARIMA confidence bounds:
-
-1.  **Inertial (Base) Scenario:** Predicts moderate inflation and a gradual adjustment of the exchange rate. 
-    * *Result:* Yields the most stable employment outcomes, with unemployment stabilizing around 4.86% by 2028. The model confirms that macroeconomic predictability fosters job creation.
-2.  **Macroeconomic Imbalance (Deflationary Shock):** Simulates an unnaturally strong KGS (37 per USD) and severe deflation (-29%).
-    * *Result:* Despite "optimistic" absolute numbers, the model accurately identifies this as a trap. The loss of export competitiveness forces the labor market into stagnation (~5.02%).
-3.  **Crisis Scenario (Stagflationary Shock):** Features hyperinflation (122%), massive currency devaluation (182 KGS/USD), and a sharp drop in remittances.
-    * *Result:* The algorithm successfully captured the "lagging" nature of the labor market. Businesses absorb the initial shock, but the compounded pressure leads to a structural breaking point by 2028, forcing a severe spike in unemployment to 7.47%.
-
-*Final forecasts visualization*
-![Unemployment Forecast Graph](final_forecast.png)
-
-*Feature importance visualization*
-![Feature Importance Graph](feature_importance_diploma.png)
-
-## ✍️ Author
-**[Ilim Tazhibaev]** * **University:** Ala-Too International University 
-* **Project:** Diploma Project of Specialization (2026)
+## Usage
+Open the Jupyter Notebook and run the cells sequentially. The notebook is divided into parts: Data Preparation, Feature Importance, ARIMA Forecasting, and final ML Scenario building.
