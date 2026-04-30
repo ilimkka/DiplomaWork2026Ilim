@@ -1,5 +1,5 @@
 # Forecasting Labor Market Indicators in Kyrgyzstan Using Machine Learning
-
+https://colab.research.google.com/drive/1NY3ye74ubiDjO6pd5MYGiDyQMPNnaqJQ?usp=sharing
 ## Project Overview
 This project forecasts Kyrgyzstan’s unemployment rate up to the year 2028 by combining machine learning (ML) techniques with time-series econometrics. It utilizes historical macroeconomic data (2000–2023) to build a predictive engine capable of modeling various economic scenarios.
 
