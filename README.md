@@ -5,7 +5,7 @@ This project forecasts Kyrgyzstan’s unemployment rate up to the year 2028 by c
 
 ## Methodology
 The project follows a hybrid forecasting pipeline:
-1.  **Data Preparation:** Cleaning raw World Bank data and handling specific economic indicators (Remittances, Gold prices, etc.).
+1.  **Data Preparation:** Cleaning raw data and handling specific economic indicators (Remittances, Gold prices, etc.).
 2.  **Feature Importance:** Using Gradient Boosting, Random Forest, and XGBoost to identify the most significant macroeconomic predictors (Agri-Employment and Remittances were found to be key).
 3.  **Stationarity Testing:** Augmented Dickey-Fuller (ADF) tests to determine the integration order for ARIMA modeling.
 4.  **AutoARIMA Projection:** Forecasting the features themselves to create inputs for future scenarios.
